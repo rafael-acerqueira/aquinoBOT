@@ -1,4 +1,6 @@
-.btn-enter {
+import styled from 'styled-components';
+
+const Button = styled.button`
   background-color: #ee3e25;
   border-radius: 25px;
   border: none;
@@ -7,4 +9,6 @@
   height: 50px;
   text-transform: uppercase;
   width: 280px;
-}
+`;
+
+export default Button;
