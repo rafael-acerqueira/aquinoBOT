@@ -3,12 +3,13 @@ import './App.css'
 
 import Button from './components/Button'
 import Logo from './components/Logo'
+import LoginWrapper from './components/LoginWrapper'
 
 const App = () => (
-  <div className='wrapper'>
+  <LoginWrapper>
     <Logo />
     <Button />
-  </div>
+  </LoginWrapper>
 );
 
 export default App;
