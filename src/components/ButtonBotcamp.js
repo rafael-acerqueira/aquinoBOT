@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Button = styled.button`
+const ButtonBotcamp = styled.button`
   background-color: #ee3e25;
   border-radius: 25px;
   border: none;
@@ -11,4 +11,4 @@ const Button = styled.button`
   width: 280px;
 `;
 
-export default Button;
+export default ButtonBotcamp;
