@@ -1,14 +1,9 @@
 import React from 'react';
 
-import ButtonBotcamp from './components/ButtonBotcamp'
-import Logo from './components/LogoBotcamp'
-import LoginWrapper from './components/LoginWrapper'
+import Login from './pages/Login/index'
 
 const App = () => (
-  <LoginWrapper>
-    <Logo />
-    <ButtonBotcamp>Entrar</ButtonBotcamp>
-  </LoginWrapper>
+  <Login />
 );
 
 export default App;
