@@ -1,13 +1,13 @@
 import React from 'react';
 
 import ButtonBotcamp from '../../components/ButtonBotcamp'
-import Logo from '../../components/LogoBotcamp'
+import LogoBotcamp from '../../components/LogoBotcamp'
 import LoginWrapper from '../../components/LoginWrapper'
 
 
 const Login = () => (
   <LoginWrapper>
-    <Logo />
+    <LogoBotcamp width='248px' />
     <ButtonBotcamp>Entrar</ButtonBotcamp>
   </LoginWrapper>
 );
