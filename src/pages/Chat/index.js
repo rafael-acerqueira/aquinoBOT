@@ -7,6 +7,8 @@ import LogoutButton from '../../components/LogoutButton';
 import HeaderWrapper from '../../components/HeaderWrapper';
 import SearchInput from '../../components/SearchInput';
 import FooterWrapper from '../../components/FooterWrapper';
+import BodyWrapper from '../../components/BodyWrapper';
+import MessageBox from '../../components/MessageBox';
 
 const Chat = () => (
   <>
@@ -16,6 +18,9 @@ const Chat = () => (
         <LogoutButton />
       </Link>
     </HeaderWrapper>
+    <BodyWrapper>
+      <MessageBox>!cpf</MessageBox>
+    </BodyWrapper>
     <FooterWrapper>
       <SearchInput placeholder="Diz aí..." type="text"/>
     </FooterWrapper>
