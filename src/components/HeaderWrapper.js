@@ -9,7 +9,7 @@ const HeaderWrapper = styled.header`
   height: 66px;
   justify-content: space-around;
   margin: 0 auto;
-  width: 375px;
+  width: 415px;
 `;
 
 export default HeaderWrapper;
