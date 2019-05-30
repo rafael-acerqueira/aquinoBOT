@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
+import uuidv4 from 'uuid/v4'
 
 
 import LogoBotcamp from '../../components/LogoBotcamp'
@@ -14,25 +15,23 @@ class Chat extends Component {
 
   state = {
     commandMessages: [],
-    searchInputText: '',
-    id: 1
+    searchInputText: ''
   }
 
   onKeyDown = (e) => {
     if (e.key === 'Enter') {
 
-      const { commandMessages, searchInputText, id } = this.state
+      const { commandMessages, searchInputText } = this.state
 
       this.setState({ 
         commandMessages: [
           ...commandMessages, 
           {
-            id,
+            id: uuidv4(),
             text: searchInputText
           }
         ],
-        searchInputText: '',
-        id: id + 1
+        searchInputText: ''
       })
     }
   }
