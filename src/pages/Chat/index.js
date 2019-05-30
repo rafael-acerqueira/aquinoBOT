@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
 import uuidv4 from 'uuid/v4'
 
@@ -11,64 +11,47 @@ import FooterWrapper from '../../components/FooterWrapper';
 import BodyWrapper from '../../components/BodyWrapper';
 import MessageBox from '../../components/MessageBox'
 
-class Chat extends Component {
+const Chat = () => {
+  const [commandMessages, setCommandMessages] = useState([])
+  const [searchInputText, setSearchInputText] = useState('')
 
-  state = {
-    commandMessages: [],
-    searchInputText: ''
-  }
-
-  onKeyDown = (e) => {
+  const onKeyDown = (e) => {
     if (e.key === 'Enter') {
-
-      const { commandMessages, searchInputText } = this.state
-
-      this.setState({ 
-        commandMessages: [
-          ...commandMessages, 
-          {
-            id: uuidv4(),
-            text: searchInputText
-          }
-        ],
-        searchInputText: ''
-      })
+      setCommandMessages( messages => [...messages, {
+        id: uuidv4(),
+        text: searchInputText
+      }])
+      setSearchInputText('')
     }
   }
 
-  onChange = (e) => {
-    this.setState({ searchInputText: e.target.value })
+  const onChange = (e) => {
+    setSearchInputText(e.target.value)
   }
-  
-  render() {
 
-    const { commandMessages, searchInputText } = this.state
-
-    return(
-      <>
-        <HeaderWrapper>
-          <LogoBotcamp width='200px' />
-          <Link to='/'>
-            <LogoutButton />
-          </Link>
-        </HeaderWrapper>
-        <BodyWrapper>
-          {
-            commandMessages.map(message => <MessageBox key={message.id}>{message.text}</MessageBox>)
-          }
-        </BodyWrapper>
-        <FooterWrapper>
-          <SearchInput 
-            onKeyDown={this.onKeyDown}
-            onChange={this.onChange} 
-            value={searchInputText}  
-            placeholder="Diz aí..." 
-            type="text"
-          />
-        </FooterWrapper>
-      </>
-    )
-  }
+  return(
+    <>
+      <HeaderWrapper>
+        <LogoBotcamp width='200px' />
+        <Link to='/'>
+          <LogoutButton />
+        </Link>
+      </HeaderWrapper>
+      <BodyWrapper>
+        {
+          commandMessages.map(message => <MessageBox key={message.id}>{message.text}</MessageBox>)
+        }
+      </BodyWrapper>
+      <FooterWrapper>
+        <SearchInput 
+          onKeyDown={onKeyDown}
+          onChange={onChange} 
+          value={searchInputText}  
+          placeholder="Diz aí..." 
+          type="text"
+        />
+      </FooterWrapper>
+    </>
+  )
 }
-
 export default Chat;
