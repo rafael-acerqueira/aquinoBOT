@@ -1,15 +1,22 @@
-import styled from 'styled-components'
+import React from 'react'
+import ImageQuestionContent from './ImageQuestionContent'
+import ImageQuestionMask from './ImageQuestionMask'
+import ImageQuestionWrapper from './ImageQuestionWrapper'
 
-const ImageQuestion = styled.img`
-  background-color: rgba(238, 62, 37, 0.83);
-  border-radius: 15px 0 15px 15px;
-  cursor: pointer;
-  display: block;
-  margin-left: auto;
-  margin-bottom: 20px;
-  padding: 2px;
-  width: 200px;
-  height: 200px;
-`
+const ImageQuestion = ({ src, imagesLength, onClick }) => {
+  return (
+    imagesLength > 0
+      ?
+        (
+          <ImageQuestionWrapper>
+            <ImageQuestionContent src={src} images={imagesLength} />
+            <ImageQuestionMask onClick={onClick}>mais {imagesLength - 1}</ImageQuestionMask>
+          </ImageQuestionWrapper>
+        )
+      :
+        <ImageQuestionContent src={src} images={imagesLength} onClick={onClick} />
+    
+  )
+}
 
 export default ImageQuestion

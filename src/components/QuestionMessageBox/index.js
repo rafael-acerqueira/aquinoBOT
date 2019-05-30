@@ -3,11 +3,10 @@ import React from 'react'
 import TextQuestion from './TextQuestion'
 import ImageQuestion from './ImageQuestion'
 
-const QuestionMessageBox = ({ content, type }) => {
+const QuestionMessageBox = ({ content, type, images, onClick }) => {
   const questionTypes = {
     message: TextQuestion,
-    image: ImageQuestion//,
-    // audio: AudioQuestion
+    image: ImageQuestion
   };
   const QuestionComponnent = questionTypes[type]
   return(
@@ -15,7 +14,7 @@ const QuestionMessageBox = ({ content, type }) => {
 		? 
     	<QuestionComponnent>{content}</QuestionComponnent>
 		: 
-			<QuestionComponnent src={content} />
+			<QuestionComponnent src={content} imagesLength={images} onClick={type === 'image' ? onClick : null} />
 	)	
 }
 

@@ -9,6 +9,7 @@ const UploadBox = ({ handleUpload }) => (
 			id='upload' 
 			type='file' 
 			style={{ display: 'none'}}
+			multiple
 		/>
 	</>
 )
