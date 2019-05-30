@@ -6,6 +6,7 @@ const BodyWrapper = styled.body`
   height: 667px;
   padding: 40px 20px;
   width: 375px;
+  overflow-y: scroll;
 `;
 
 export default BodyWrapper;

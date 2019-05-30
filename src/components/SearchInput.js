@@ -7,6 +7,7 @@ const SearchInput = styled.input`
   box-sizing: border-box;
   color: rgba(0, 0, 0, 0.3);
   padding-left: 16px;
+  padding-right: 120px;
   font-size: 20px;
   height: 50px;
   width: 100%;

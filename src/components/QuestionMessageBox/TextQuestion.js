@@ -12,7 +12,8 @@ const MessageBox = styled.span`
   line-height: 40px;
   padding-left: 14px;
   width: 75%;
-  height: 40px;
+  min-height: 40px;
+  word-break: break-word;
 
   ${props => props.answer && css`
     background-color: rgba(255, 255, 255, 0.83);
