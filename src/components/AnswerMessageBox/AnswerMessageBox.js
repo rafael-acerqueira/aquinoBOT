@@ -1,14 +1,13 @@
 import React from 'react'
 import RobotBotcamp from '../RobotBotcamp'
 import MessageBox from '../MessageBox'
-
-import './style.css'
+import MessageBoxWrapper from './MessageBoxWrapper'
 
 const AnswerMessageBox = ({ children }) => (
-  <div className="answer-message-box">
+  <MessageBoxWrapper>
     <RobotBotcamp />
     <MessageBox answer>{children}</MessageBox>
-  </div>
+  </MessageBoxWrapper>
 )
 
 export default AnswerMessageBox
