@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import uuidv4 from 'uuid/v4'
 import Lightbox from 'react-image-lightbox'
+import { css } from 'glamor'
+import ScrollToBottom from 'react-scroll-to-bottom'
 import 'react-image-lightbox/style.css'
 import LogoBotcamp from '../../components/LogoBotcamp'
 import LogoutButton from '../../components/LogoutButton'
@@ -89,6 +91,12 @@ const Chat = () => {
     return mountImagesArray()[prevLightboxIndex()]
   }
 
+  const SCROLL_CSS = css({
+    height: 667,
+    width: 380,
+    paddingLeft: 15
+  })
+
   return (
     <>
       <HeaderWrapper>
@@ -98,19 +106,20 @@ const Chat = () => {
         </Link>
       </HeaderWrapper>
       <BodyWrapper>
-        {
-          commandMessages.map(
-            message => 
-              <QuestionMessageBox
-                key={message.id} 
-                content={message.content} 
-                type={message.type}
-                onClick={(e) => openLightbox(e)}
-                images={message.images ? message.images.length : null}
-              />
-          )    
-        }
-
+        <ScrollToBottom className={ SCROLL_CSS }>
+          {
+            commandMessages.map(
+              message => 
+                <QuestionMessageBox
+                  key={message.id} 
+                  content={message.content} 
+                  type={message.type}
+                  onClick={(e) => openLightbox(e)}
+                  images={message.images ? message.images.length : null}
+                />
+            )    
+          }
+        </ScrollToBottom>
         {isOpen && (
           <Lightbox
             mainSrc={mountImagesArray()[lightboxIndex]}

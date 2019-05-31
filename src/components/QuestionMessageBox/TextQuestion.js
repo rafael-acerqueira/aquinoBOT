@@ -7,7 +7,8 @@ const MessageBox = styled.span`
   display: block;
   font-family: Roboto;
   font-size: 16px;
-  margin-left: auto;
+  float: right;
+  margin-right 20px;
   margin-bottom: 20px;
   line-height: 40px;
   padding-left: 14px;

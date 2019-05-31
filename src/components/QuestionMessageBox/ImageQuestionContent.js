@@ -12,7 +12,8 @@ const ImageQuestionContent = styled.img`
   ${props => !props.images && css`
     width: 200px;
     height: 200px;
-    margin-left: auto;
+    float: right;
+    margin-right 20px;
     margin-bottom: 20px;
   `}  
 `
