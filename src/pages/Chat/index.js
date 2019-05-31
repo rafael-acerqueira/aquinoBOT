@@ -8,6 +8,7 @@ import 'react-image-lightbox/style.css'
 import LogoBotcamp from '../../components/LogoBotcamp'
 import LogoutButton from '../../components/LogoutButton'
 import UploadBox from '../../components/UploadBox'
+import RecordButton from '../../components/RecordButton'
 import HeaderWrapper from '../../components/HeaderWrapper'
 import SearchInput from '../../components/SearchInput'
 import FooterWrapper from '../../components/FooterWrapper'
@@ -20,6 +21,7 @@ const Chat = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [lightboxIndex, setLightboxIndex] = useState(0)
   const [currentImage, setCurrentImage] = useState('')
+  const [audioRecord, setAudioRecord] = useState(null)
 
   const onKeyDown = (e) => {
     if (e.key === 'Enter') {
@@ -46,6 +48,37 @@ const Chat = () => {
       type: 'image'
     }])
   }
+
+  const handleRecord = () => {
+    let mediaRecorder = null
+    navigator.mediaDevices.getUserMedia({audio: true})
+    .then( stream => {
+      mediaRecorder = new MediaRecorder(stream)
+      setAudioRecord(mediaRecorder)
+      let audioChunks = []
+      
+      mediaRecorder.ondataavailable = data => audioChunks.push(data.data)
+        
+      mediaRecorder.onstop = () => {
+      
+        const blob = new Blob(audioChunks, {type: 'audio/mpeg-3'})
+        setCommandMessages( messages => [...messages, {
+          id: uuidv4(),
+          content: URL.createObjectURL(blob),
+          type: 'audio'
+        }])    
+      }
+      
+      mediaRecorder.start()
+               
+    },
+    err => {
+      console.log(err)
+    })
+
+  }
+
+  const handleStoreRecord = () => audioRecord.stop()
 
   const mountImagesArray = () => {
     const message = commandMessages.filter(message => message.content === currentImage)
@@ -97,6 +130,7 @@ const Chat = () => {
     paddingLeft: 15
   })
 
+
   return (
     <>
       <HeaderWrapper>
@@ -140,6 +174,7 @@ const Chat = () => {
           type="text"
         />
         <UploadBox handleUpload={handleUpload}/>
+        <RecordButton onMouseDown={handleRecord} onMouseUp={handleStoreRecord}/>
       </FooterWrapper>
     </>
   )

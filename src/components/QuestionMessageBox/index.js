@@ -2,11 +2,13 @@ import React from 'react'
 
 import TextQuestion from './TextQuestion'
 import ImageQuestion from './ImageQuestion'
+import AudioQuestion from './AudioQuestion'
 
 const QuestionMessageBox = ({ content, type, images, onClick }) => {
   const questionTypes = {
     text: TextQuestion,
-    image: ImageQuestion
+    image: ImageQuestion,
+    audio: AudioQuestion
   };
   const QuestionComponnent = questionTypes[type]
   return(
