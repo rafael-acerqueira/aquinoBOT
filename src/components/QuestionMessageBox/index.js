@@ -5,12 +5,12 @@ import ImageQuestion from './ImageQuestion'
 
 const QuestionMessageBox = ({ content, type, images, onClick }) => {
   const questionTypes = {
-    message: TextQuestion,
+    text: TextQuestion,
     image: ImageQuestion
   };
   const QuestionComponnent = questionTypes[type]
   return(
-		type === 'message' 
+		type === 'text' 
 		? 
     	<QuestionComponnent>{content}</QuestionComponnent>
 		: 

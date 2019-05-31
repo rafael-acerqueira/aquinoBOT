@@ -16,7 +16,7 @@ const Chat = () => {
   const [commandMessages, setCommandMessages] = useState([])
   const [searchInputText, setSearchInputText] = useState('')
   const [isOpen, setIsOpen] = useState(false)
-  const [index, setIndex] = useState(0)
+  const [lightboxIndex, setLightboxIndex] = useState(0)
   const [currentImage, setCurrentImage] = useState('')
 
   const onKeyDown = (e) => {
@@ -24,7 +24,7 @@ const Chat = () => {
       setCommandMessages( messages => [...messages, {
         id: uuidv4(),
         content: searchInputText,
-        type: 'message'
+        type: 'text'
       }])
       setSearchInputText('')
     }
@@ -58,6 +58,14 @@ const Chat = () => {
     return images
   }
 
+  const nextLightboxIndex = () => {
+    return (lightboxIndex + 1) % mountImagesArray().length
+  }
+
+  const prevLightboxIndex = () => {
+    return (lightboxIndex + mountImagesArray().length - 1) % mountImagesArray().length
+  }
+
 	const openLightbox = (event) => {
     const src = event.target.tagName === 'SPAN' 
       ? event.target.parentNode.children[0].src 
@@ -65,20 +73,20 @@ const Chat = () => {
     
     setCurrentImage(src)
 
-    setIndex(0)
+    setLightboxIndex(0)
     setIsOpen(true)
   }
 
   const nextSrc = () => {
     if (mountImagesArray().length === 1)
       return ''
-    return mountImagesArray()[(index + 1) % mountImagesArray().length]
+    return mountImagesArray()[nextLightboxIndex()]
   }
 
   const prevSrc = () => {
     if (mountImagesArray().length === 1)
       return ''    
-    return mountImagesArray()[(index + mountImagesArray().length - 1) % mountImagesArray().length]
+    return mountImagesArray()[prevLightboxIndex()]
   }
 
   return (
@@ -105,12 +113,12 @@ const Chat = () => {
 
         {isOpen && (
           <Lightbox
-            mainSrc={mountImagesArray()[index]}
+            mainSrc={mountImagesArray()[lightboxIndex]}
             nextSrc={nextSrc()}
             prevSrc={prevSrc()}
             onCloseRequest={() => setIsOpen(false)}
-            onMovePrevRequest={() => setIndex((index + mountImagesArray().length - 1) % mountImagesArray().length)}
-            onMoveNextRequest={() => setIndex((index + 1) % mountImagesArray().length)}
+            onMovePrevRequest={() => setLightboxIndex(prevLightboxIndex)}
+            onMoveNextRequest={() => setLightboxIndex(nextLightboxIndex)}
           />
         )}
       </BodyWrapper>
