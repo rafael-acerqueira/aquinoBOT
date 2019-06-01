@@ -124,7 +124,7 @@ const Chat = () => {
     return mountImagesArray()[prevLightboxIndex()]
   }
 
-  const SCROLL_CSS = css({
+  const SCROLLCSS = css({
     height: 667,
     width: 380,
     paddingLeft: 15
@@ -140,7 +140,7 @@ const Chat = () => {
         </Link>
       </HeaderWrapper>
       <BodyWrapper>
-        <ScrollToBottom className={ SCROLL_CSS }>
+        <ScrollToBottom className={ SCROLLCSS }>
           {
             commandMessages.map(
               message => 

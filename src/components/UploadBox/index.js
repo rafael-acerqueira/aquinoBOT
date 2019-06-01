@@ -10,6 +10,7 @@ const UploadBox = ({ handleUpload }) => (
 			type='file' 
 			style={{ display: 'none'}}
 			multiple
+			accept='image/*'
 		/>
 	</>
 )
