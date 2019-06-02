@@ -9,6 +9,7 @@ import LogoBotcamp from '../../components/LogoBotcamp'
 import LogoutButton from '../../components/LogoutButton'
 import UploadBox from '../../components/UploadBox'
 import RecordButton from '../../components/RecordButton'
+import RecordTimer from '../../components/RecordTimer'
 import HeaderWrapper from '../../components/HeaderWrapper'
 import SearchInput from '../../components/SearchInput'
 import FooterWrapper from '../../components/FooterWrapper'
@@ -22,6 +23,7 @@ const Chat = () => {
   const [lightboxIndex, setLightboxIndex] = useState(0)
   const [currentImage, setCurrentImage] = useState('')
   const [audioRecord, setAudioRecord] = useState(null)
+  const [isRecording, setIsRecording] = useState(false)
 
   const onKeyDown = (e) => {
     if (e.key === 'Enter') {
@@ -70,6 +72,7 @@ const Chat = () => {
       }
       
       mediaRecorder.start()
+      setIsRecording(true)
                
     },
     err => {
@@ -78,7 +81,10 @@ const Chat = () => {
 
   }
 
-  const handleStoreRecord = () => audioRecord.stop()
+  const handleStoreRecord = () => { 
+    audioRecord.stop()
+    setIsRecording(false)
+  }  
 
   const mountImagesArray = () => {
     const message = commandMessages.filter(message => message.content === currentImage)
@@ -174,7 +180,8 @@ const Chat = () => {
           type="text"
         />
         <UploadBox handleUpload={handleUpload}/>
-        <RecordButton onMouseDown={handleRecord} onMouseUp={handleStoreRecord}/>
+        <RecordButton onMouseDown={handleRecord} onMouseUp={handleStoreRecord} isRecording={isRecording} />
+        { isRecording && <RecordTimer /> }
       </FooterWrapper>
     </>
   )
