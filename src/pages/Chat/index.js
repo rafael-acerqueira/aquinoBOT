@@ -42,13 +42,15 @@ const Chat = () => {
 
   const handleUpload = (e) => {
     e.persist()
-    const imagesCount = e.target.files.length
-    setCommandMessages( messages => [...messages, {
-      id: uuidv4(),
-      content: URL.createObjectURL(e.target.files[0]),
-      images: imagesCount > 1 ? e.target.files : {},
-      type: 'image'
-    }])
+    if(e.target.files.length > 0) {
+      const imagesCount = e.target.files.length
+      setCommandMessages( messages => [...messages, {
+        id: uuidv4(),
+        content: URL.createObjectURL(e.target.files[0]),
+        images: imagesCount > 1 ? e.target.files : {},
+        type: 'image'
+      }])
+    }
   }
 
   const handleRecord = () => {
