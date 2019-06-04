@@ -9,4 +9,4 @@ This project was done as part of a React JS bootcamp provide by [Impulso Network
 
 ### Demo
 ----
-![Demo](https://raw.githubusercontent.com/rafael-acerqueira/aquinoBOT/tree/master/src/screenshots/demo.gif)
+![AquinoBOT- Animated gif demo](demo/demo.gif)
