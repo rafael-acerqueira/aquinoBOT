@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const BodyWrapper = styled.body`
+const BodyWrapper = styled.div`
   background-color: #eaeafd;
   margin: -8px auto 0 auto;
   height: 667px;
