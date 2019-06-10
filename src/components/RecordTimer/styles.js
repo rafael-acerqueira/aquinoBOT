@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const RecordTimerContent = styled.div`
+export const Content = styled.div`
   animation: show-timer 1s linear
   align-items: center;
   background-color: #fbfbff;
@@ -24,6 +24,3 @@ const RecordTimerContent = styled.div`
     }
   }  
 `
-
-
-export default RecordTimerContent

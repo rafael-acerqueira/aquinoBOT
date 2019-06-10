@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import uploadSvg from '../../images/upload.svg'
 
-const UploadButton = styled.img.attrs({
+export const UploadButton = styled.img.attrs({
   src: uploadSvg,
   alt: "Anexar"
 })`
@@ -13,6 +13,3 @@ const UploadButton = styled.img.attrs({
   bottom: 6px;
   cursor: pointer;
 `;
-
-
-export default UploadButton;

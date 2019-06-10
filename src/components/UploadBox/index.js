@@ -1,5 +1,5 @@
 import React from 'react'
-import UploadButton from './UploadButton'
+import { UploadButton } from './styles'
 
 const UploadBox = ({ handleUpload }) => (
 	<>

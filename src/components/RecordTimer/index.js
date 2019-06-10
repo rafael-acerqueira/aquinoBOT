@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import RecordTimerContent from './RecordTimerContent'
+import { Content } from './styles'
 
 const RecordTimer = () => {
   const [minutes, setMinutes] = useState(0)
@@ -25,9 +25,9 @@ const RecordTimer = () => {
   
   adjustTime()
   return(
-    <RecordTimerContent>
+    <Content>
       {minutes < 10 ? '0' + minutes : minutes}:{seconds < 10 ? '0' + seconds : seconds}
-    </RecordTimerContent>
+    </Content>
   )
 }
 
